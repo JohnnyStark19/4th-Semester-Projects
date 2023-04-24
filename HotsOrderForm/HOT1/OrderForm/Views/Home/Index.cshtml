@@ -1,0 +1,39 @@
+﻿@model orderForm
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Crazy Crank's T-Shirt Factory</h1>
+<h3>Order Form</h3>
+
+<form asp-action="Index" method="post">
+    <div class="row form-group">
+        <label asp-for="Quantity">Quanitity</label>
+        <input class="form-control" asp-for="Quantity" />
+        <span class="text-danger" asp-validation-for="Quantity"></span>
+    </div>
+    <div class="row form-group">
+        <label asp-for="DiscountCode">Discount Code</label>
+        <input class="form-control" asp-for="DiscountCode" />
+        <span class="text-danger" asp-validation-for="DiscountCode"></span>
+        <label class="col-sm-4">@ViewBag.messages.ToString()</label>
+    </div>
+    <div class="row">
+        <button class="btn btn-primary" type="submit">Order</button>
+    </div>
+    <div class="col">
+        <label class="btn-outline-dark">@ViewBag.quantity.ToString() T-Shirts at @ViewBag.shirt.ToString("c2") each</label>
+        <p>-------------------------------------------------------</p>
+
+        <label class="">Subtotal: </label>
+        <label class="">@ViewBag.subtotal.ToString("c2")</label>
+
+        <label class="">Tax: </label>
+        <label class="">@ViewBag.tax.ToString("c2")</label>
+
+        <label class="">Total: </label>
+        <label class="">@ViewBag.total.ToString("c2")</label>
+    </div>
+
+</form>
